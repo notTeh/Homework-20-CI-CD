@@ -17,8 +17,10 @@ jobs:
       # Step 2: Set up Node.js environment
       - name: Setup Node.js
         uses: actions/setup-node@v3
+
       
       # Step 3: Run Cypress component tests
+
       - name: Run Cypress component tests
         uses: cypress-io/github-action@v5
         with:
