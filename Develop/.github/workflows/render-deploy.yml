@@ -1,0 +1,23 @@
+name: Deploy to Render
+
+# This workflow runs when code is pushed to the main branch (typically after merging from develop)
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: Check out the repository code (optional for simple deploy hook)
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      # Step 2: Trigger deployment on Render using the deploy hook
+      - name: Deploy to Render
+        run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
+        
+      # Step 3: Verify deployment status
+      - name: Deployment status
+        run: echo "Deployment to Render has been triggered. Check Render dashboard for deployment status."
